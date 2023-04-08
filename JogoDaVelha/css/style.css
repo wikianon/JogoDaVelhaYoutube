@@ -1,0 +1,213 @@
+/*
+*Estilo CSS3 do jogo da velha
+*/
+
+/*Zerando todas as margens*/
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+
+  /*Criando um gradient na pagina*/
+  background: linear-gradient(90deg,
+      rgba(65, 185, 131, 1) 0%,
+      rgba(0, 212, 255, 1) 100%);
+
+  /*Retirando a barra de rolagen inferior*/
+  overflow-x: hidden;
+}
+
+#jogadorAtual{
+  color: blue;
+}
+
+input[type="text"]{
+  width: 250px;
+  height: 40px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
+.board {
+  /*Para criar as celulas do 
+    jogo temos que usar display grid.*/
+  display: grid;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+
+  /*Criando as células do jogo em 3 linhas*/
+  grid-template-columns: repeat(3, auto);
+}
+
+/*Mudando a cor do marcador X e 
+do marcador Circulo que estarão na ".board".*/
+.board.xis .cell:not(.xis):not(.circle):hover::after,
+.board.xis .cell:not(.xis):not(.circle):hover::before,
+.board.circle .cell:not(.xis):not(.circle):hover::after,
+.board.xis .cell:not(.xis):not(.circle):hover::before {
+
+   /*!important sobrescreve o background branco que colocamos*/
+  background: rgba(255, 255, 255, 0.3) !important;
+
+}
+
+/* Células do Jogo */
+.cell {
+  width: 100px;
+  height: 100px;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/*Centralizando o formulario dos jogadores*/
+#formJogadores{
+  text-align: center;
+  margin-top: 30px;
+}
+
+/*Proibindo de clicar na célula ja marcada
+*****************************************/
+.cell.xis, .cell.circle {
+  cursor: not-allowed;
+}
+
+/*Retirando as bordas de cima das 1ª 2ª e 3ª celulas,
+para isso usaremos o nth-child*/
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+/*Retirando as bordas da esquerda das 1ª 4ª e 7ª celulas*/
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7) {
+  border-left: none;
+}
+
+/*Retirando as bordas abaixo das 7ª 8ª e 9ª celulas*/
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+  border-bottom: none;
+}
+
+/*Retirando as bordas da direita das 3ª 6ª e 9ª celulas*/
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9) {
+  border-right: none;
+}
+
+/*Estilizando as classes que irá marcar as celulas do jogo
+*********************************************/
+
+/*Criando o marcador X.
+
+Fazendo o marcador aparecer quando 
+passar o mouse encima das celulas não selecionadas,
+Selecionando a classe ".board" onde está a classe ".xis".
+
+.board.xis .cell:hover::after
+.board.xis .cell:hover::before,
+
+
+Seletor :not()
+:not(.xis):not(.circle)
+Faz com que a célula ja marcada não 
+mude de forma ao passar o mouse encima.
+*/
+.cell.xis::before,
+.cell.xis::after,
+.board.xis .cell:not(.xis):not(.circle):hover::after,
+.board.xis .cell:not(.xis):not(.circle):hover::before {
+  content: "";
+
+  /*0.15 ou 15% da largura, cada celula tem 100px*/
+  height: calc(100px * 0.15);
+
+  /*0.8 ou 80% da largura*/
+  width: calc(100px * 0.8);
+  background: white;
+  position: absolute;
+}
+
+.cell.xis::before,
+.board.xis .cell:not(.xis):not(.circle):hover::before {
+  transform: rotate(45deg);
+}
+
+.cell.xis::after,
+.board.xis .cell:not(.xis):not(.circle):hover::after {
+  transform: rotate(-45deg);
+}
+
+/*Fazendo o marcador Circulo
+*****************************************************/
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:not(.xis):not(.circle):hover::after,
+.board.circle .cell:not(.xis):not(.circle):hover::after {
+  content: "";
+  height: calc(100px * 0.8);
+  width: calc(100px * 0.8);
+  background: white;
+  position: absolute;
+  border-radius: 50%;
+}
+
+/* Mensagem de Vitória */
+.winning-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  flex-direction: column;
+}
+
+.show-winning-message {
+  display: flex;
+}
+
+.winning-message-button {
+  font-size: 2.5rem;
+  background-color: rgba(65, 185, 131, 1);
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  margin-top: 16px;
+  color: white;
+}
+
+.winning-message-button:hover {
+  color: rgba(65, 185, 131, 1);
+  background-color: white;
+}
+
+.winning-message-text {
+  color: white;
+  font-size: 5rem;
+}

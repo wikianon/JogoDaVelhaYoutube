@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" type="text/css" href="bootstrap4/css/bootstrap.css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>Jogo da Velha em HTML5 CSS3 e JavaScript</title>
+</head>
+
+<body>
+
+  <form id="formJogadores">
+    <div class="form-group">
+      <label for="jogador1">Jogador 1: </label>
+      <input type="text" id="jogador1" name="jogador1">
+    </div>
+
+    <div class="form-group">
+      <label for="jogador2">Jogador 2: </label>
+      <input type="text" id="jogador2" name="jogador2">
+    </div>
+
+    <!--Para pegar o nome dos jogadores aqui o botão tem que ser do type="button"-->
+    <button class="btn btn-primary" type="button" onclick="startGame()">Jogadores</button>
+  </form>
+
+  
+  <div class="text-center">
+
+    <!--Mostra o jogador atual da rodada-->
+    <span id="jogadorAtual"></span>
+
+    <!--Atributo "data-board"-->
+    <div id="boardId" class="board" data-board>
+
+      <!--Atributo "data-cell"-->
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+    </div><!--Celulas do jogo da velha-->
+
+  </div><!--mostra jogador Atual-->
+
+  <!--Atributo "data-winning-message"-->
+  <div class="winning-message" data-winning-message>
+
+    <!--Atributo "data-winning-message-text"-->
+    <span class="winning-message-text" data-winning-message-text>X Venceu</span>
+
+    <!--Atributo "data-restart-button"-->
+    <button class="winning-message-button" data-restart-button>
+      Reiniciar
+    </button>
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+
+  <script src="bootstrap4/js/bootstrap.min.js"></script>
+
+  <script src="popper/popper.min.js"></script>
+
+  <script src="js/jogo.js"></script>
+
+</body>
+
+</html>
