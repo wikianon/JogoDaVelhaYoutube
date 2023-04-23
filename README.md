@@ -1,10 +1,3 @@
-
-- [AULA YOUTUBE](https://youtu.be/0EiX9c4vzRs)
-
-- [REPOSITORIO AULA](https://github.com/felipemotarocha/jogo-da-velha-dicasparadevs)
-
-- [REFERENCIA DAS MELHORIAS](https://gist.github.com/rpkraemer/1152320)
-
 ## README JogoDaVelhaYoutube
 
 #### Form para pegar o nome dos jogadores.
@@ -21,3 +14,11 @@
 ------------------
 #### Mostra o vencedor da rodada e o botão de reiniciar o jogo.
 ![Vencedor da rodada](imagens_jogo/mostrando_o_vencedor.png)
+
+------------------
+
+- [AULA YOUTUBE](https://youtu.be/0EiX9c4vzRs)
+
+- [REPOSITORIO AULA](https://github.com/felipemotarocha/jogo-da-velha-dicasparadevs)
+
+- [REFERENCIA DAS MELHORIAS](https://gist.github.com/rpkraemer/1152320)
